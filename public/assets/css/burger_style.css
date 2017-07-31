@@ -1,0 +1,92 @@
+/* ********** GENERAL ********** */
+
+* {
+
+	box-sizing: border-box;
+}
+
+body {
+	background-color:#ffc560;
+}
+
+.container {
+	width:50%;
+	margin:0 auto;
+	margin-top:10%;
+	margin-bottom:10%;
+}
+
+.row {
+	margin-left:2%;
+	margin-right:2%;
+}
+
+.col-md-6 {
+	width:50%;
+	margin:0 auto;
+}
+
+.col-md-12 {
+	width:60%;
+	margin:0 auto;
+	margin-left:20%;
+	margin-right:20%;
+}
+
+#to-devour {
+	padding:2.5%;
+}
+
+#devoured {
+	padding:2.5%;
+}
+
+#create-burger {
+	margin-top:2%;
+	padding:2.5%;
+}
+
+/* ********** TEXT ********** */
+
+h1 {
+	font-family: 'Sigmar One', cursive;
+	font-size:50px;
+}
+
+h3 {
+	font-family:'Lato', sans-serif;
+	font-size:25px;
+	font-weight: bold;
+}
+
+li, button, input, label {
+	font-family: 'Lato', sans-serif;
+	list-style: none;
+}
+
+li {
+	padding:10%;
+}
+
+input {
+	width:110px;
+}
+
+/* ********** BUTTON ********** */
+
+button {
+	width:150px;
+	height:50px;
+
+	border-color:#d0ff84;
+	border-width:2px;
+	border-style:solid;
+	background-color: #fff;
+}
+
+/* ********** IMAGES ********** */
+
+img {
+	width:200px;
+	height:auto;
+}

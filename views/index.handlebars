@@ -1,0 +1,70 @@
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-12">
+		<h1>Burgers</h1>
+		<img src="./../public/assets/img/krabbypatty.png"/>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-6" id="to-devour">
+			<h3>Burgers For The Eating</h3>
+
+			<ul>
+				 {{#each burgers}}
+
+				 	{{#unless this.devoured}}
+						<li>
+							#{{this.id}} {{this.burger_name}}
+
+							{{!-- Form to update devoured as true / send put command to server 	--}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="burger" value="true">
+								<button type="submit" id="devour-btn">DEVOUR IT</button>
+							</form>
+						</li>
+					{{/unless}}
+			 	{{/each}}
+			</ul>
+		</div>
+
+		<div class="col-md-6" id="devoured">
+
+			<h3>Burgers Devoured</h3>
+
+			<ul>
+				 {{#each burgers}}
+
+			 		{{#if this.devoured}}
+					 	<li>
+					 		#{{this.id}} {{this.burger_name}}
+					 	</li>
+				 	{{/if}}
+			 	{{/each}}
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12" id="create-burger">
+
+			<h3>Create Your Own Burger</h3>
+
+			{{!-- Form to add a new burger / send post command to server --}}
+			<form action="/" method="POST">
+
+				<div class="form-group">
+					<label for="burg">Name:</label>
+					<input type="text" id="burger-name" name="burger">
+					<input type="hidden" name="devoured" value="0">
+				</div>
+
+				<button type="submit" id="submit">CREATE BURGER</button>
+			</form>
+		</div>
+
+	</div>
+</div>
