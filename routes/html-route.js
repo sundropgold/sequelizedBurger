@@ -7,8 +7,8 @@ var path = require("path");
 
 module.exports = function(app) {
 
-	// index page
 	app.get("/", function(req,res){
-		res.sendFile(path.join(__dirname,"../views/layouts/main.handlebars"));
+		// get index.handlebars
+		res.render(path.join(__dirname,"../views/index.handlebars"));
 	});
 };

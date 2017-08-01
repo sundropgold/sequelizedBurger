@@ -20,20 +20,22 @@ module.exports = function(app) {
 	// route to post/create a burger
 	app.post("/", function(req,res){
 
-		db.Burger.create(req.body.burger).then(function(dbBurger){
+		db.Burger.create({
+			burger_name: req.body.burger_name
+		}).then(function(dbBurger){
 			res.redirect("/");
 		});
 
 	});
 
 	// route to devour a burger by updating its devoured col
-	app.put("/:id", function(req,res){
+	app.put("/", function(req,res){
 
 		db.Burger.update({
 			devoured:true
 		},{
 			where:{
-				id:req.params.id
+				id:req.body.id
 			}
 		}).then(function(dbBurger){
 			res.redirect("/");

@@ -20,8 +20,8 @@
 							#{{this.id}} {{this.burger_name}}
 
 							{{!-- Form to update devoured as true / send put command to server 	--}}
-							<form action="/{{this.id}}?_method=PUT" method="POST">
-								<input type="hidden" name="burger" value="true">
+							<form id="devour-burger">
+								<input type="hidden" name="burger">
 								<button type="submit" id="devour-btn">DEVOUR IT</button>
 							</form>
 						</li>
@@ -54,12 +54,12 @@
 			<h3>Create Your Own Burger</h3>
 
 			{{!-- Form to add a new burger / send post command to server --}}
-			<form action="/" method="POST">
+			<form id="create-burger">
 
 				<div class="form-group">
 					<label for="burg">Name:</label>
 					<input type="text" id="burger-name" name="burger">
-					<input type="hidden" name="devoured" value="0">
+					<input type="hidden" name="devoured">
 				</div>
 
 				<button type="submit" id="submit">CREATE BURGER</button>

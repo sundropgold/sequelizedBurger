@@ -3,6 +3,7 @@
 
 var express = require("express");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 // Sets up the Express App
 // =============================================================
@@ -26,6 +27,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Method Override
+// =============================================================
+// Overrides with POST having ?_method=PUT
+
+app.use(methodOverride("_method"));
 
 // Handlebars
 // =============================================================
