@@ -11,6 +11,9 @@ var bodyParser = require("body-parser");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+// require models for syncinc
+var db = require("./models");
+
 // Static Files
 // =============================================================
 // serve static files - css and js
@@ -29,7 +32,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // =============================================================
 // Overrides with POST having ?_method=PUT
 
-
 app.use(methodOverride("_method"));
 
 // Handlebars
@@ -45,8 +47,13 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them
 
 var routes = require("./controllers/burgers_controller.js");
-
 app.use("/", routes);
 
-app.listen(PORT);
+// Syncing
+// =============================================================
+
+db.sequelize.sync({force:true}).then(function(){
+	app.listen(PORT);
+});
+
 
