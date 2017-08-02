@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-	// SHOW ALL BURGERS --------------------------------------
-	function showBurgers() {
-		
-	}
-
-	// DEVOUR BURGER --------------------------------------
-	$('#devour-btn').on('click', function(){
-
-	});
-
 	// CREATE BURGER --------------------------------------
 	$('#submit').on('click', createBurger);
 

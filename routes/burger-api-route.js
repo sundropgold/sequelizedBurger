@@ -1,6 +1,8 @@
 // Dependencies
 // =============================================================
 
+var express = require("express");
+
 // Requiring our models
 var db = require("../models");
 
@@ -12,7 +14,12 @@ module.exports = function(app) {
 	app.get("/", function(req,res){
 
 		db.Burger.findAll({}).then(function(dbBurger){
-			res.render("index", dbBurger);
+			
+			var burgerObject = {
+				burgers: dbBurger
+			};
+
+			res.render("index", burgerObject);
 		});
 		
 	});
@@ -29,13 +36,13 @@ module.exports = function(app) {
 	});
 
 	// route to devour a burger by updating its devoured col
-	app.put("/", function(req,res){
+	app.put("/:id", function(req,res){
 
 		db.Burger.update({
 			devoured:true
 		},{
 			where:{
-				id:req.body.id
+				id:req.params.id
 			}
 		}).then(function(dbBurger){
 			res.redirect("/");

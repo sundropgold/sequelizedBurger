@@ -18,7 +18,7 @@ var db = require("./models");
 // =============================================================
 // serve static files - css and js
 
-app.use("/public", express.static("./public"));
+app.use("/public", express.static("public"));
 
 // Body Parser
 // =============================================================
@@ -46,7 +46,7 @@ app.set("view engine", "handlebars");
 // =============================================================
 // Import routes and give the server access to them
 
-require ("./routes/html-route.js")(app);
+require("./routes/html-route.js")(app);
 require("./routes/burger-api-route.js")(app);
 
 // Syncing
