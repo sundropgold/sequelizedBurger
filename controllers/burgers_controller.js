@@ -1,9 +1,16 @@
 // Dependencies -----------------------------------------------------
-var express = require("express");
-
-var router = express.Router();
 
 var db = require("../models");
+
+// Node Dependencies
+var express = require('express');
+var router = express.Router();
+
+// Extracts the sequelize connection from the models object
+var sequelizeConnection = db.sequelize;
+
+// Sync the tables
+sequelizeConnection.sync(({force:true}));
 
 // Router -----------------------------------------------------
 
@@ -12,21 +19,21 @@ var db = require("../models");
 // route that gets/shows all the burgers
 router.get("/", function(req,res){
 	
-	db.Burger.findAll({}).then(function(dbBurger){
+	db.Burgers.findAll({}).then(function(dbBurger){
 
 		var burgerObject = {
 			burgers: dbBurger
 		};
 
-		res.render("index, burgerObject");
+		res.render("index", burgerObject);
 	});
 });
 
 // route to post/add a burger
 router.post("/", function(req,res){
 
-	db.Burger.create({
-		burger_name:req.body.burger_name
+	db.Burgers.create({
+		burger_name:req.body.burger
 	}).then(function(dbBurger){
 
 		res.redirect("/");
@@ -36,7 +43,7 @@ router.post("/", function(req,res){
 // route to devour a burger by updating its devoured category to true
 router.put("/:id", function(req,res){
 	
-	db.Burger.update({
+	db.Burgers.update({
 		devoured:true
 	},{
 		where:{
@@ -49,3 +56,4 @@ router.put("/:id", function(req,res){
 });
 
 module.exports = router;
+
